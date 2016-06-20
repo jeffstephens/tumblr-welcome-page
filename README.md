@@ -1,2 +1,4 @@
-# tumblr-welcome-page
-A code snippet to install in your Tumblr theme which will redirect users once per session to a landing page of your choice.
+# Tumblr Welcome Page
+This JS snippet should be installed in your Tumblr theme. Customize the
+redirect URL (`URL_TO_REDIRECT_TO`) at the top. Every new browser session, this
+will redirect users from your homepage to the URL you specify here.
