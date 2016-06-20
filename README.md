@@ -17,7 +17,7 @@ will redirect users from your homepage to the URL you specify here.
     ```
 
 3. Within the `<script>` tags you just added, paste
-	[the contents of `snippet.min.js`](https://raw.githubusercontent.com/jeffstephens/tumblr-welcome-page/master/snippet.min.js)
+	[the contents of `snippet.js`](https://raw.githubusercontent.com/jeffstephens/tumblr-welcome-page/master/snippet.js)
 	from this repository.
 
 4. Customize the `URL_TO_REDIRECT_TO` to point to your welcome page. This should
