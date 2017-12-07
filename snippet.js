@@ -8,7 +8,7 @@
 
 URL_TO_REDIRECT_TO = 'http://example.com/welcome-page/';
 
-function atBaseUrl() {
+window.atBaseUrl = function() {
 	return window.location.pathname == "/";
 }
 
@@ -27,7 +27,7 @@ var hasStorage = (function() {
 if (hasStorage) {
 
 	// make sure we're at the root of the current page, otherwise do nothing
-	if (atBaseUrl()) {
+	if (window.atBaseUrl()) {
 
 		// if we don't have the sessionStorage entry, create it and redirect
 		if (sessionStorage.getItem('visited') === null) {
