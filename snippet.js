@@ -6,35 +6,44 @@
  * users from your homepage to the URL you specify here.
  */
 
-URL_TO_REDIRECT_TO = 'http://example.com/welcome-page/';
-
-window.atBaseUrl = function() {
-	return window.location.pathname == "/";
-}
-
-// source: https://mathiasbynens.be/notes/localstorage-pattern
-var hasStorage = (function() {
-	try {
-		sessionStorage.setItem('mod', 'mod');
-		sessionStorage.removeItem('mod');
-		return true;
-	} catch (exception) {
-		return false;
+ $(document).ready( function() {
+	function atBaseUrl() {
+		return window.location.pathname == "/";
 	}
-}());
 
-// make sure we support sessionStorage, otherwise do nothing
-if (hasStorage) {
+	function hideSplash() {
+		$('header.cover').hide();
+		$('.holder').addClass('visible');
+	}
 
-	// make sure we're at the root of the current page, otherwise do nothing
-	if (window.atBaseUrl()) {
-
-		// if we don't have the sessionStorage entry, create it and redirect
-		if (sessionStorage.getItem('visited') === null) {
-			sessionStorage.setItem('visited', 'true');
-			window.location=URL_TO_REDIRECT_TO;
+	// source: https://mathiasbynens.be/notes/localstorage-pattern
+	var hasStorage = (function() {
+		try {
+			sessionStorage.setItem('mod', 'mod');
+			sessionStorage.removeItem('mod');
+			return true;
+		} catch (exception) {
+			return false;
 		}
+	}());
 
+	// make sure we support sessionStorage, otherwise do nothing
+	if (hasStorage) {
+
+		// make sure we're at the root of the current page, otherwise do nothing
+		if (atBaseUrl()) {
+
+			// if we don't have the sessionStorage entry, create it
+			if (sessionStorage.getItem('visited') === null) {
+				sessionStorage.setItem('visited', 'true');
+			} else {
+				// otherwise, we've already been here - hide the interstitial immediately
+				hideSplash();
+			}
+		} else {
+			hideSplash();
+		}
+	} else {
+		hideSplash();
 	}
-
-}
+});
